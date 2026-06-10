@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>بن الديوان - شبين الكوم</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;700;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --green:#1B4332;--green-mid:#2D6A4F;--green-light:#52B788;
+  --gold:#C9A84C;--gold-light:#F0D080;--gold-dim:#8A6E2A;
+  --dark:#080E0A;--dark-mid:#0F1A12;--dark-surf:#162019;
+  --cream:#F4F0E6;--cream2:#EDE8D8;
+  --brown:#2A1F0A;--brown-m:#6B5C3A;
+  --border:#D4C89A;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Cairo',sans-serif;background:var(--dark);color:var(--cream);overflow-x:hidden}
+
+.demo-banner{
+  background:var(--green-mid);color:#fff;text-align:center;
+  font-size:12px;font-weight:700;padding:7px 16px;
+  position:sticky;top:0;z-index:200;letter-spacing:.5px;
+  border-bottom:1px solid rgba(82,183,136,0.3);
+}
+
+nav{
+  background:rgba(8,14,10,0.96);backdrop-filter:blur(12px);
+  padding:14px 24px;display:flex;justify-content:space-between;align-items:center;
+  position:sticky;top:31px;z-index:199;
+  border-bottom:1px solid rgba(82,183,136,0.1);
+}
+.nav-logo{
+  font-family:'Playfair Display',serif;
+  font-size:19px;font-weight:700;color:var(--gold-light);letter-spacing:1px;
+}
+.nav-links{display:flex;gap:22px;list-style:none}
+.nav-links a{color:#7A8C70;text-decoration:none;font-size:13px;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--green-light)}
+
+/* HERO */
+.hero{
+  min-height:95vh;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;text-align:center;
+  padding:80px 24px 60px;position:relative;overflow:hidden;
+  background:var(--dark-mid);
+}
+.hero-bg{
+  position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse at 30% 50%, rgba(27,67,50,0.35) 0%, transparent 55%),
+    radial-gradient(ellipse at 70% 30%, rgba(201,168,76,0.1) 0%, transparent 50%);
+  animation:bgShift 8s ease-in-out infinite alternate;
+}
+@keyframes bgShift{
+  from{opacity:.7}to{opacity:1}
+}
+/* floating coffee steam */
+.steam{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.s{
+  position:absolute;border-radius:50%;
+  background:rgba(82,183,136,0.06);
+  animation:float var(--d,10s) ease-in-out infinite var(--dl,0s);
+}
+@keyframes float{
+  0%{transform:translateY(100vh) scale(0);opacity:0}
+  10%{opacity:1}
+  90%{opacity:.3}
+  100%{transform:translateY(-20vh) scale(1.5);opacity:0}
+}
+
+.hero-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(27,67,50,0.5);border:1px solid rgba(82,183,136,0.25);
+  color:var(--green-light);font-size:12px;font-weight:700;
+  padding:6px 18px;border-radius:30px;margin-bottom:24px;
+  letter-spacing:1px;text-transform:uppercase;
+  animation:fadeUp .7s ease both;
+}
+.hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(44px,11vw,82px);font-weight:700;
+  line-height:1;margin-bottom:8px;
+  background:linear-gradient(135deg,var(--gold-light),var(--green-light));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+  animation:fadeUp .7s .1s ease both;
+}
+.hero-ar{
+  font-size:clamp(18px,4vw,26px);color:rgba(240,208,128,0.6);
+  font-weight:700;margin-bottom:20px;letter-spacing:2px;
+  animation:fadeUp .7s .2s ease both;
+}
+.hero-sub{
+  font-size:15px;color:#7A8C70;margin-bottom:36px;
+  line-height:1.8;max-width:420px;
+  animation:fadeUp .7s .3s ease both;
+}
+.hero-pills{
+  display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:40px;
+  animation:fadeUp .7s .4s ease both;
+}
+.pill{
+  background:rgba(27,67,50,0.4);border:1px solid rgba(82,183,136,0.2);
+  color:#8AB898;font-size:13px;font-weight:600;padding:8px 18px;border-radius:30px;
+  transition:all .2s;
+}
+.pill:hover{background:rgba(27,67,50,0.7);border-color:var(--green-light)}
+.hero-cta{
+  display:inline-block;
+  background:linear-gradient(135deg,var(--green-mid),var(--green));
+  color:#fff;font-family:'Cairo',sans-serif;font-size:15px;font-weight:700;
+  padding:14px 38px;border-radius:14px;text-decoration:none;
+  transition:all .25s;border:1px solid rgba(82,183,136,0.3);
+  box-shadow:0 0 40px rgba(27,67,50,0.5);
+  animation:fadeUp .7s .5s ease both;
+}
+.hero-cta:hover{transform:translateY(-2px);box-shadow:0 0 60px rgba(82,183,136,0.3)}
+
+.scroll-hint{
+  position:absolute;bottom:28px;left:50%;transform:translateX(-50%);
+  color:#2A3D2E;font-size:10px;letter-spacing:2px;text-transform:uppercase;
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  animation:fadeIn 1s 1.2s ease both;
+}
+.scroll-hint::after{
+  content:'';width:1px;height:36px;
+  background:linear-gradient(to bottom,var(--green-mid),transparent);
+  animation:scrollLine 1.8s ease-in-out infinite;
+}
+@keyframes scrollLine{0%,100%{opacity:.2;transform:scaleY(.4)}50%{opacity:1;transform:scaleY(1)}}
+
+/* STRIP */
+.strip{background:var(--dark-surf);overflow:hidden;
+  border-top:1px solid rgba(82,183,136,0.08);
+  border-bottom:1px solid rgba(82,183,136,0.08);}
+.strip-inner{display:flex;white-space:nowrap;animation:marquee 20s linear infinite}
+.s-item{padding:13px 28px;font-size:12px;font-weight:700;color:#3A5C42;
+  border-left:1px solid rgba(82,183,136,0.08);letter-spacing:.5px}
+.s-item em{color:var(--green-light);font-style:normal;margin-right:6px}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* STATS */
+.stats-row{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));
+  gap:1px;background:rgba(82,183,136,0.1);
+  border:1px solid rgba(82,183,136,0.1);border-radius:16px;overflow:hidden;
+}
+.stat{background:var(--dark-surf);padding:28px 16px;text-align:center}
+.stat-num{
+  font-family:'Playfair Display',serif;
+  font-size:38px;color:var(--gold-light);display:block;margin-bottom:6px;
+}
+.stat-label{font-size:11px;color:#3A5230;font-weight:700;letter-spacing:.5px}
+
+/* SEC */
+.sec{padding:72px 24px}
+.sec-light{background:var(--cream);color:var(--brown)}
+.sec-dark{background:var(--dark-mid)}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:3px;
+  color:var(--green-light);text-transform:uppercase;margin-bottom:8px}
+.sec-title{font-family:'Playfair Display',serif;font-size:32px;font-weight:700;margin-bottom:32px}
+
+/* SPECIALTY */
+.specialty-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px
+}
+.sp-card{
+  background:rgba(27,67,50,0.2);border:1px solid rgba(82,183,136,0.12);
+  border-radius:16px;padding:24px 20px;text-align:center;
+  transition:all .3s;cursor:default;
+}
+.sp-card:hover{background:rgba(27,67,50,0.4);border-color:rgba(82,183,136,0.3);transform:translateY(-4px)}
+.sp-icon{font-size:36px;margin-bottom:12px;display:block}
+.sp-name{font-size:15px;font-weight:700;color:var(--gold-light);margin-bottom:6px}
+.sp-desc{font-size:12px;color:#5A7060;line-height:1.6}
+
+/* MENU */
+.menu-tabs{display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap}
+.tab-btn{
+  padding:9px 20px;border-radius:30px;font-size:13px;font-weight:700;
+  font-family:'Cairo',sans-serif;cursor:pointer;
+  border:1px solid rgba(82,183,136,0.2);color:#5A7060;
+  background:transparent;transition:all .2s;
+}
+.tab-btn.active,.tab-btn:hover{
+  background:var(--green-mid);color:#fff;border-color:var(--green-mid)
+}
+.menu-panel{display:none}
+.menu-panel.active{
+  display:grid;grid-template-columns:1fr 1fr;gap:8px;
+  animation:fadeIn .3s ease;
+}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.menu-item{
+  background:rgba(27,67,50,0.15);border:1px solid rgba(82,183,136,0.08);
+  border-radius:12px;padding:14px 16px;
+  display:flex;justify-content:space-between;align-items:center;gap:8px;
+  transition:all .2s;
+}
+.menu-item:hover{background:rgba(27,67,50,0.35);border-color:rgba(82,183,136,0.25);transform:translateX(-3px)}
+.item-name{font-size:14px;color:#C8D8C0;font-weight:600}
+.item-price{font-size:13px;color:var(--gold);font-weight:700;white-space:nowrap;flex-shrink:0}
+
+/* ABOUT */
+.about-list{display:flex;flex-direction:column}
+.about-row{
+  display:flex;gap:20px;align-items:flex-start;padding:24px 0;
+  border-bottom:1px solid rgba(201,168,76,0.1);transition:all .3s;
+}
+.about-row:last-child{border-bottom:none}
+.about-row:hover .about-num{background:var(--green-mid);color:#fff;border-color:var(--green-mid)}
+.about-num{
+  width:46px;height:46px;border-radius:50%;
+  border:2px solid var(--green-mid);color:var(--green-light);
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;font-weight:900;flex-shrink:0;transition:all .3s;
+}
+.about-content h3{font-size:16px;font-weight:700;color:var(--brown);margin-bottom:4px}
+.about-content p{font-size:13px;color:var(--brown-m);line-height:1.75}
+
+/* REVIEWS */
+.reviews-wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.review-card{
+  background:#fff;border:1px solid var(--border);border-radius:16px;padding:22px;
+  transition:transform .25s;
+}
+.review-card:hover{transform:translateY(-4px)}
+.review-top{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.avatar{
+  width:44px;height:44px;border-radius:50%;
+  background:linear-gradient(135deg,var(--green-mid),var(--green-light));
+  display:flex;align-items:center;justify-content:center;
+  font-size:17px;font-weight:900;color:#fff;flex-shrink:0;
+}
+.reviewer-name{font-size:14px;font-weight:700;color:var(--brown)}
+.reviewer-meta{font-size:11px;color:var(--brown-m);margin-top:2px}
+.stars{color:#F5A623;font-size:15px;letter-spacing:2px;margin-bottom:10px}
+.review-text{font-size:13px;color:#5C4020;line-height:1.75}
+
+/* CONTACT */
+.contact-items{display:flex;flex-direction:column;margin-bottom:28px}
+.contact-row{
+  display:flex;align-items:center;gap:16px;padding:18px 0;
+  border-bottom:1px solid rgba(82,183,136,0.08);transition:padding .2s;
+}
+.contact-row:last-child{border-bottom:none}
+.contact-row:hover{padding-right:8px}
+.c-icon{
+  width:42px;height:42px;border-radius:12px;
+  background:rgba(27,67,50,0.3);border:1px solid rgba(82,183,136,0.15);
+  display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;
+  transition:background .2s;
+}
+.contact-row:hover .c-icon{background:rgba(27,67,50,0.6)}
+.c-label{font-size:11px;color:#3A5230;font-weight:700;letter-spacing:.5px;margin-bottom:2px}
+.c-text{font-size:14px;color:#9AB8A0;line-height:1.5}
+
+.btn-main{
+  display:block;width:100%;
+  background:linear-gradient(135deg,var(--green-mid),var(--green));
+  color:#fff;font-family:'Cairo',sans-serif;font-size:16px;font-weight:700;
+  padding:16px;border-radius:14px;border:none;cursor:pointer;
+  text-align:center;text-decoration:none;transition:all .25s;margin-bottom:12px;
+  box-shadow:0 0 30px rgba(27,67,50,0.4);
+}
+.btn-main:hover{transform:translateY(-2px);box-shadow:0 0 50px rgba(82,183,136,0.3)}
+.btn-outline{
+  display:block;width:100%;background:transparent;color:#5A7A60;
+  font-family:'Cairo',sans-serif;font-size:14px;font-weight:600;
+  padding:14px;border-radius:14px;border:1px solid rgba(82,183,136,0.2);
+  cursor:pointer;text-align:center;text-decoration:none;transition:all .2s;
+}
+.btn-outline:hover{border-color:var(--green-light);color:var(--green-light)}
+
+footer{
+  background:var(--dark);padding:28px 24px;text-align:center;
+  border-top:1px solid rgba(82,183,136,0.08);
+}
+.f-logo{font-family:'Playfair Display',serif;font-size:24px;color:var(--gold-light);margin-bottom:8px}
+footer p{font-size:12px;color:#2A3D2E}
+.f-credit{color:var(--green-mid);margin-top:4px}
+
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+@media(max-width:520px){
+  .menu-panel.active{grid-template-columns:1fr}
+  .nav-links{gap:14px}
+  .specialty-grid{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="demo-banner">⚡ نموذج ديمو — سيُعدَّل بالبيانات الحقيقية بعد الاتفاق</div>
+
+<nav>
+  <div class="nav-logo">بن الديوان</div>
+  <ul class="nav-links">
+    <li><a href="#menu">المنيو</a></li>
+    <li><a href="#about">عنّا</a></li>
+    <li><a href="#reviews">التقييمات</a></li>
+    <li><a href="#contact">تواصل</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="steam" id="steam"></div>
+  <div class="hero-tag">☕ شبين الكوم · المنوفية</div>
+  <h1>بن الديوان</h1>
+  <div class="hero-ar">Bin Al-Diwan Coffee</div>
+  <p class="hero-sub">حيث تلتقي أصالة القهوة التركية<br>بأجواء شبين الكوم الحميمة</p>
+  <div class="hero-pills">
+    <span class="pill">☕ قهوة تركية أصيلة</span>
+    <span class="pill">⭐ 4.2 تقييم · 426 رأي</span>
+    <span class="pill">🍽️ جلوس داخلي مريح</span>
+    <span class="pill">💰 من 1 لـ 200 جنيه</span>
+  </div>
+  <a href="#contact" class="hero-cta">تواصل معنا</a>
+  <div class="scroll-hint">اسكرول</div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="strip-inner" id="strip"></div>
+</div>
+
+<!-- STATS -->
+<section class="sec sec-dark reveal" style="padding-bottom:0">
+  <div class="stats-row">
+    <div class="stat"><span class="stat-num">4.2</span><div class="stat-label">تقييم جوجل</div></div>
+    <div class="stat"><span class="stat-num">426</span><div class="stat-label">تقييم حقيقي</div></div>
+    <div class="stat"><span class="stat-num">200</span><div class="stat-label">جنيه أقصى سعر</div></div>
+    <div class="stat"><span class="stat-num">+5</span><div class="stat-label">سنوات خبرة</div></div>
+  </div>
+</section>
+
+<!-- SPECIALTY -->
+<section class="sec sec-dark reveal" id="about">
+  <div class="eyebrow">تخصصنا</div>
+  <div class="sec-title" style="color:var(--gold-light)">اللي بنتميز بيه</div>
+  <div class="specialty-grid">
+    <div class="sp-card">
+      <span class="sp-icon">☕</span>
+      <div class="sp-name">قهوة تركية أصيلة</div>
+      <div class="sp-desc">محضّرة بالطريقة التقليدية على الرمل الساخن</div>
+    </div>
+    <div class="sp-card">
+      <span class="sp-icon">🫖</span>
+      <div class="sp-name">إسبريسو وكابتشينو</div>
+      <div class="sp-desc">حبة قهوة مختارة وتحضير باحتراف</div>
+    </div>
+    <div class="sp-card">
+      <span class="sp-icon">🌿</span>
+      <div class="sp-name">جو هادي ومميز</div>
+      <div class="sp-desc">ديكور عصري وأجواء مريحة تخليك ترجع تاني</div>
+    </div>
+    <div class="sp-card">
+      <span class="sp-icon">👥</span>
+      <div class="sp-name">مكان للجميع</div>
+      <div class="sp-desc">سواء عيلة، أصحاب، أو لقاءات عمل</div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="sec sec-dark reveal" id="menu" style="border-top:1px solid rgba(82,183,136,0.08)">
+  <div class="eyebrow">اكتشف</div>
+  <div class="sec-title" style="color:var(--gold-light)">المنيو</div>
+  <div class="menu-tabs">
+    <button class="tab-btn active" onclick="switchTab(this,'hot')">☕ قهوة</button>
+    <button class="tab-btn" onclick="switchTab(this,'cold')">🧊 كولد</button>
+    <button class="tab-btn" onclick="switchTab(this,'juice')">🍊 عصائر</button>
+    <button class="tab-btn" onclick="switchTab(this,'food')">🍰 أكل</button>
+  </div>
+  <div class="menu-panel active" id="tab-hot">
+    <div class="menu-item"><span class="item-name">قهوة تركية</span><span class="item-price">25 جنيه</span></div>
+    <div class="menu-item"><span class="item-name">إسبريسو</span><span class="item-price">30 جنيه</span></div>
+    <div class="menu-item"><span class="item-name">كابتشينو</span><span class="item-price">45 جنيه</span></div>
+    <div class="menu-item"><span class="item-name">لاتيه</span><span class="item-price">50 جنيه</span></div>
+    <div class="menu-item"><span class="item-name">نسكافيه</span><span class="item-price">35 جنيه</span></div>
+    <div class="menu-item"><span class="item-name">شاي كرك</span><span class="item-price">20 جنيه</span></div>
+    <div class="menu-item"><span class="item-name">هوت شوكليت</span><span class="item-price">40 جنيه</span></div>
+    <div class="menu-item"><span class="item-name">شاي أخضر</span><span class="item-price">20 جنيه</span></div>
+  </div>
+  <div class="menu-panel" id="tab-cold">
+    <div class="menu-item"><span class="item-name">آيس لاتيه</span><span class="item-price">55 جنيه</span></div>
+    <div class="menu-item"><span class="item-name">فرابتشينو</span><span class="item-price">60 جنيه</span></div>
+    <div class="menu-item"><span class="item-name">آيس أمريكانو</span><span class="item-price">45 جنيه</span></div>
+    <div class="menu-item"><span class="item-name">موهيتو</span><span class="item-price">50 جنيه</span></div>
+    <div class="menu-item"><span class="item-name">ليموناضة</span><span class="item-price">35 جنيه</span></div>
+    <div class="menu-item"><span class="item-name">سموذي</span><span class="item-price">55 جنيه</span></div>
+  </div>
+  <div class="menu-panel" id="tab-juice">
+    <div class="menu-item"><span class="item-name">عصير برتقال</span><span class="item-price">30 جنيه</span></div>
+    <div class="menu-item"><span class="item-name">عصير مانجو</span><span class="item-price">35 جنيه</span></div>
+    <div class="menu-item"><span class="item-name">عصير فراولة</span><span class="item-price">35 جنيه</span></div>
+    <div class="menu-item"><span class="item-name">عصير جوافة</span><span class="item-price">30 جنيه</span></div>
+    <div class="menu-item"><span class="item-name">كوكتيل فواكه</span><span class="item-price">45 جنيه</span></div>
+    <div class="menu-item"><span class="item-name">عصير تفاح</span><span class="item-price">30 جنيه</span></div>
+  </div>
+  <div class="menu-panel" id="tab-food">
+    <div class="menu-item"><span class="item-name">كرواسون</span><span class="item-price">40 جنيه</span></div>
+    <div class="menu-item"><span class="item-name">كيك شوكولاتة</span><span class="item-price">55 جنيه</span></div>
+    <div class="menu-item"><span class="item-name">تشيز كيك</span><span class="item-price">60 جنيه</span></div>
+    <div class="menu-item"><span class="item-name">وافل</span><span class="item-price">65 جنيه</span></div>
+    <div class="menu-item"><span class="item-name">بان كيك</span><span class="item-price">60 جنيه</span></div>
+    <div class="menu-item"><span class="item-name">سندوتش دجاج</span><span class="item-price">70 جنيه</span></div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="sec reveal" id="reviews" style="background:#F8F4EA;border-top:1px solid var(--border)">
+  <div class="eyebrow" style="color:var(--green-mid)">الناس قالت</div>
+  <div class="sec-title" style="color:var(--brown)">آراء العملاء · 426 تقييم</div>
+  <div class="reviews-wrap">
+    <div class="review-card">
+      <div class="review-top">
+        <div class="avatar">م</div>
+        <div>
+          <div class="reviewer-name">mahmoud shaker</div>
+          <div class="reviewer-meta">Local Guide · منذ 4 أشهر</div>
+        </div>
+      </div>
+      <div class="stars">★★★★★</div>
+      <div class="review-text">من أفضل الأماكن لتناول القهوة التركية في شبين الكوم — جو حلو وخدمة ممتازة.</div>
+    </div>
+    <div class="review-card">
+      <div class="review-top">
+        <div class="avatar">أ</div>
+        <div>
+          <div class="reviewer-name">أحمد حبيب</div>
+          <div class="reviewer-meta">Local Guide · 452 تقييم</div>
+        </div>
+      </div>
+      <div class="stars">★★★★☆</div>
+      <div class="review-text">ممتاز والخدمة ممتازة — قهوتهم مميزة وأسعار معقولة جداً.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="sec sec-dark reveal" id="contact">
+  <div class="eyebrow">تعال زورنا</div>
+  <div class="sec-title" style="color:var(--gold-light)">تواصل معنا</div>
+  <div class="contact-items">
+    <div class="contact-row">
+      <div class="c-icon">📞</div>
+      <div><div class="c-label">اتصل بنا</div><div class="c-text">010 28593440</div></div>
+    </div>
+    <div class="contact-row">
+      <div class="c-icon">📍</div>
+      <div><div class="c-label">الموقع</div><div class="c-text">شارع صبري أبو العلم، شبين الكوم، المنوفية</div></div>
+    </div>
+    <div class="contact-row">
+      <div class="c-icon">⏰</div>
+      <div><div class="c-label">أوقات العمل</div><div class="c-text">يفتح كل يوم · يقفل 12 منتصف الليل</div></div>
+    </div>
+    <div class="contact-row">
+      <div class="c-icon">💰</div>
+      <div><div class="c-label">السعر للشخص</div><div class="c-text">من 1 لـ 200 جنيه</div></div>
+    </div>
+  </div>
+  <a href="https://maps.google.com/?q=بن+الديوان+شبين+الكوم" target="_blank" class="btn-main">📍 خد الاتجاهات على جوجل ماب</a>
+  <a href="tel:01028593440" class="btn-outline">📞 اتصل بنا دلوقتي</a>
+</section>
+
+<footer>
+  <div class="f-logo">بن الديوان</div>
+  <p>شبين الكوم، المنوفية · قهوة تركية أصيلة</p>
+  <p class="f-credit">© 2025 — تصميم الموقع: [اسمك]</p>
+</footer>
+
+<script>
+// Steam particles
+const sc = document.getElementById('steam');
+for(let i=0;i<20;i++){
+  const s=document.createElement('div');
+  s.className='s';
+  const sz=Math.random()*60+20;
+  s.style.cssText=`left:${Math.random()*100}%;width:${sz}px;height:${sz}px;--d:${Math.random()*12+8}s;--dl:${Math.random()*10}s`;
+  sc.appendChild(s);
+}
+
+// Strip
+const items=['قهوة تركية أصيلة','تقييم 4.2 على جوجل','426 تقييم حقيقي','جو هادي ومريح','إسبريسو وكابتشينو','شبين الكوم المنوفية','أسعار في المتناول','خدمة مميزة'];
+const si=document.getElementById('strip');
+const html=items.map(t=>`<div class="s-item"><em>✦</em>${t}</div>`).join('');
+si.innerHTML=html+html;
+
+// Tabs
+function switchTab(btn,name){
+  document.querySelectorAll('.menu-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+name).classList.add('active');
+  btn.classList.add('active');
+}
+
+// Reveal
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')})},{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
